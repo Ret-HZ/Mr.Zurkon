@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mr. Zurkon", "Mr. Zurkon\Mr. Zurkon.csproj", "{1D85EC50-7AF1-4E9F-921D-AB666B7FC20D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAKLib", "PAKLib\PAKLib.csproj", "{3021504E-41BB-43FF-AE86-A6582876286A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D85EC50-7AF1-4E9F-921D-AB666B7FC20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D85EC50-7AF1-4E9F-921D-AB666B7FC20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D85EC50-7AF1-4E9F-921D-AB666B7FC20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D85EC50-7AF1-4E9F-921D-AB666B7FC20D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3021504E-41BB-43FF-AE86-A6582876286A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3021504E-41BB-43FF-AE86-A6582876286A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3021504E-41BB-43FF-AE86-A6582876286A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3021504E-41BB-43FF-AE86-A6582876286A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A7ADE2C-A502-44B9-8B08-4D0E329654B1}
+	EndGlobalSection
+EndGlobal

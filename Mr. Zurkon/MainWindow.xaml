@@ -1,0 +1,33 @@
+﻿<mah:MetroWindow x:Class="Mr.Zurkon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:Mr.Zurkon"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="grid_main" AllowDrop="True" Drop="grid_main_Drop">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+
+        <Menu Grid.Row="0" Grid.Column="0">
+            <MenuItem Header="File">
+                <MenuItem x:Name="mi_openFile" Header="Open" Click="MenuOpenFileDialog"/>
+                <MenuItem x:Name="mi_openFilePAK" Header="Open PAK" Click="MenuOpenFileDialogPAK"/>
+                <MenuItem x:Name="mi_openFileLOCALDAT" Header="Open LOCALDAT" Click="MenuOpenFileDialogLOCALDAT"/>
+            </MenuItem>
+            <MenuItem Header="About">
+            </MenuItem>
+        </Menu>
+
+        <TabControl x:Name="tabcontrol_tools" Grid.Row="1" Grid.Column="0">
+            <TabItem x:Name="tab_tools_pak" Header="PAKTool"/>
+            <TabItem x:Name="tab_tools_locdata" Header="Relocalizer"/>
+        </TabControl>
+    </Grid>
+</mah:MetroWindow>
