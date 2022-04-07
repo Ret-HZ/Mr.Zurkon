@@ -4,6 +4,8 @@ using PAKLib.GIM;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,7 +16,7 @@ namespace Mr.Zurkon.UserControls
     /// </summary>
     public partial class PakContentUC : UserControl
     {
-
+        //TODO: Rewrite this mess. Code is not exactly pretty but it will do for now.
         PAK PakFile;
 
         public PakContentUC(PAK pakFile)
@@ -89,7 +91,7 @@ namespace Mr.Zurkon.UserControls
             }
         }
 
-        //TODO SAVE DIALOG FILENAME GETS TAKEN FROM THE PAK THEN PASSED TO THE SAVE FUNCTION
+
         private void SaveFileDialogGeneric(string filename, Action<string> action, params string[] filters)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -108,9 +110,90 @@ namespace Mr.Zurkon.UserControls
         }
 
 
+        /// <summary>
+        /// Opens an OpenFileDialog with the specified filters.
+        /// </summary>
+        /// <param name="filters">The filters to use in the file dialog.</param>
+        private void OpenFileDialogGeneric(Action<string> action, params string[] filters)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string dialogFilter = "";
+            foreach (string filter in filters)
+            {
+                dialogFilter += filter;
+                if (filter != filters[filters.Length - 1]) dialogFilter += "|";
+            }
+            openFileDialog.Filter = dialogFilter;
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                action(openFileDialog.FileName);
+            }
+        }
+
+
         private void SavePAK(string path)
         {
             PakWriter.WritePAK(path, PakFile);
+        }
+
+
+        private void SaveSelectedFile(string path)
+        {
+            if (datagrid.SelectedIndex != -1)
+            {
+                PakFile.ExportFile(datagrid.SelectedIndex, path);
+            }
+        }
+
+
+        private void ReplaceSelectedFile(string path)
+        {
+            int index = datagrid.SelectedIndex;
+            if (index != -1)
+            {
+                byte[] file = File.ReadAllBytes(path);
+                PakFile.ReplaceFile(index, file);
+                List<FileData> fd = (List<FileData>)datagrid.ItemsSource;
+                fd[index].Format = PakFile.GetFileFormat(index).ToString();
+                if (PakFile.GetFileFormat(index) == PakContentFormats.Format.GIM)
+                {
+                    GimData gimdata = PakFile.GetFileData()[index];
+                    fd[index].Filename = gimdata.filename;
+                    fd[index].Author = gimdata.username;
+                    fd[index].Timestamp = gimdata.timestamp;
+                    fd[index].Origin = gimdata.originator;
+                }
+            }
+        }
+
+
+        private void AddFile(string path)
+        {
+            byte[] file = File.ReadAllBytes(path);
+            PakFile.AddFile(file);
+            List<FileData> fd = new List<FileData>((List<FileData>)datagrid.ItemsSource);
+            int index = fd.Count;
+            if (PakFile.GetFileFormat(index) == PakContentFormats.Format.GIM)
+            {
+                GimData gimdata = PakFile.GetFileData()[index];
+                fd.Add(new FileData()
+                {
+                    Format = PakContentFormats.Extension[PakFile.GetFileFormat(index)],
+                    Filename = gimdata.filename,
+                    Author = gimdata.username,
+                    Timestamp = gimdata.timestamp,
+                    Origin = gimdata.originator
+                }); ;
+            }
+            else
+            {
+                fd.Add(new FileData()
+                {
+                    Format = PakContentFormats.Extension[PakFile.GetFileFormat(index)]
+                }); ;
+            }
+            datagrid.ItemsSource = fd;
         }
 
 
@@ -120,6 +203,55 @@ namespace Mr.Zurkon.UserControls
                 SavePAK,
                 "PAK Archives (*.pak*)|*.pak*",
                 "All files (*.*)|*.*");
+        }
+
+
+        private void btn_export_all_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult result = dialog.ShowDialog();
+            if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            {
+                for(int i=0; i<PakFile.GetPAKFileAmount(); i++)
+                {
+                    string path = String.Format("{0}/{1}", dialog.FileName, PakFile.GetFilenameForExport(i));
+                    PakFile.ExportFile(i, path);
+                }
+            }
+        }
+
+
+        private void btn_export_selected_Click(object sender, RoutedEventArgs e)
+        {
+            int index = datagrid.SelectedIndex;
+            if (index != -1)
+            {
+                SaveFileDialogGeneric(PakFile.GetFilenameForExport(index),
+                    SaveSelectedFile,
+                    "All files (*.*)|*.*");
+            }
+                
+        }
+
+
+        private void btn_replace_selected_Click(object sender, RoutedEventArgs e)
+        {
+            int index = datagrid.SelectedIndex;
+            if (index != -1)
+            {
+                OpenFileDialogGeneric(
+                ReplaceSelectedFile,
+                "All files (*.*)|*.*");
+            }
+        }
+
+
+        private void btn_add_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialogGeneric(
+            AddFile,
+            "All files (*.*)|*.*");
         }
     }
 }

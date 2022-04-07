@@ -81,10 +81,20 @@ namespace PAKLib
         /// <summary>
         /// Gets the file formats for the files in the PAK.
         /// </summary>
-        /// <returns>A GimData List.</returns>
+        /// <returns></returns>
         public List<PakContentFormats.Format> GetFileFormats()
         {
             return FileFormat;
+        }
+
+
+        /// <summary>
+        /// Gets the file format for the file matching the given index.
+        /// </summary>
+        /// <returns></returns>
+        public PakContentFormats.Format GetFileFormat(int index)
+        {
+            return FileFormat[index];
         }
 
 
@@ -108,6 +118,12 @@ namespace PAKLib
         }
 
 
+        public int GetPAKFileAmount()
+        {
+            return PakFiles.Count;
+        }
+
+
         /// <summary>
         /// Returns a string with the file's name preceded by its index inside the PAK.
         /// </summary>
@@ -119,15 +135,23 @@ namespace PAKLib
             if (FileFormat[fileIndex] == PakContentFormats.Format.GIM)
             {
                 filename = FileData[fileIndex].filename;
-                if (filename == "No Data" || String.IsNullOrWhiteSpace(filename)) filename = "unknown_texture_name";
+                if (filename == "No Data" || String.IsNullOrWhiteSpace(filename))
+                {
+                    filename = "unknown_texture_name";
+                    filename += String.Format(".{0}", PakContentFormats.Extension[FileFormat[fileIndex]]);
+                }
             }
 
             else if (FileFormat[fileIndex] == PakContentFormats.Format.MB_PSP_GDE || FileFormat[fileIndex] == PakContentFormats.Format.MB_PS2_GDE)
             {
                 filename = "unknown_model_name";
+                filename += String.Format(".{0}", PakContentFormats.Extension[FileFormat[fileIndex]]);
             }
 
-            filename += String.Format(".{0}", PakContentFormats.Extension[FileFormat[fileIndex]]);
+            else
+            {
+                filename += String.Format(".{0}", PakContentFormats.Extension[FileFormat[fileIndex]]);
+            }
 
             return String.Format("{0} - {1}", fileIndex.ToString().PadLeft(3, '0'), filename);
         }
@@ -136,6 +160,23 @@ namespace PAKLib
         public void ExportFile(int fileIndex, string targetPath)
         {
             File.WriteAllBytes(targetPath, PakFiles[fileIndex]);
+        }
+
+
+        public void ReplaceFile(int fileIndex, byte[] fileBytes)
+        {
+            PakFiles[fileIndex] = fileBytes;
+            PakContentFormats.Format format = CheckFileFormat(fileBytes);
+            FileFormat[fileIndex] = format;
+            if (format == PakContentFormats.Format.GIM)
+            {
+                GimData data = GimData.GetGimFileInfo(fileBytes);
+                FileData[fileIndex] = (data);
+            }
+            else
+            {
+                FileData[fileIndex] = null;
+            }
         }
 
     }
