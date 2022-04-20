@@ -201,7 +201,7 @@ namespace Mr.Zurkon.UserControls
         {
             SaveFileDialogGeneric(PakFile.GetPAKName(),
                 SavePAK,
-                "PAK Archives (*.pak*)|*.pak*",
+                "PAK Archives (*.pak)|*.pak",
                 "All files (*.*)|*.*");
         }
 

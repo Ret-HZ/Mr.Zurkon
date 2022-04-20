@@ -7,7 +7,10 @@
         xmlns:local="clr-namespace:Mr.Zurkon"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="450" Width="800">
+        MinHeight="650"
+        MinWidth="800"
+        Title="MainWindow" Height="650" Width="800">
+    
     <Grid x:Name="grid_main" AllowDrop="True" Drop="grid_main_Drop">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

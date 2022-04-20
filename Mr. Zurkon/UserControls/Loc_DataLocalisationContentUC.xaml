@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Mr.Zurkon.UserControls.Loc_DataLocalisationContentUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mr.Zurkon.UserControls"
+             mc:Ignorable="d" 
+             Height="Auto"
+             Width="Auto">
+    <Grid>
+
+        <GroupBox Header="Localisation Data">
+
+            <DataGrid x:Name="datagrid_entries" EnableColumnVirtualization="True" EnableRowVirtualization="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" ScrollViewer.CanContentScroll="True">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+
+        </GroupBox>
+    </Grid>
+</UserControl>

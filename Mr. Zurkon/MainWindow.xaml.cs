@@ -1,4 +1,5 @@
-﻿using MahApps.Metro.Controls;
+﻿using LOC_DATALib;
+using MahApps.Metro.Controls;
 using Microsoft.Win32;
 using Mr.Zurkon.UserControls;
 using PAKLib;
@@ -26,12 +27,16 @@ namespace Mr.Zurkon
             PAK pak = PakReader.ReadPAK(path);
             PakContentUC pakcontent = new PakContentUC(pak);
             tab_tools_pak.Content = pakcontent;
+            tabcontrol_tools.SelectedIndex = 0;
         }
 
 
         private void OpenLOC_DATA(string path)
         {
-            throw new NotImplementedException();
+            LOC_DATA locdata = Loc_DataReader.ReadLOC_DATA(path);
+            Loc_DataContentUC locdatacontent = new Loc_DataContentUC(locdata);
+            tab_tools_locdata.Content = locdatacontent;
+            tabcontrol_tools.SelectedIndex = 1;
         }
 
 
@@ -101,19 +106,19 @@ namespace Mr.Zurkon
         {
             OpenFileDialogGeneric(
                 "All files (*.*)|*.*", 
-                "PAK Archives (*.pak*)|*.pak*",
-                "LOCALDAT Localization Data (*.bin*)|*.bin*"
+                "PAK Archives (*.pak)|*.pak",
+                "LOCALDAT Localization Data (*.bin)|*.bin"
                 );
         }
 
         private void MenuOpenFileDialogPAK(object sender, RoutedEventArgs e)
         {
-            OpenFileDialogGeneric("PAK Archives (*.pak*)|*.pak*");
+            OpenFileDialogGeneric("PAK Archives (*.pak)|*.pak");
         }
 
         private void MenuOpenFileDialogLOCALDAT(object sender, RoutedEventArgs e)
         {
-            OpenFileDialogGeneric("LOCALDAT Localization Data (*.bin*)|*.bin*");
+            OpenFileDialogGeneric("LOCALDAT Localization Data (*.bin)|*.bin");
         }
     }
 }

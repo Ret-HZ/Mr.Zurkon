@@ -108,10 +108,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\Loc_DataContentUC.xaml.cs">
+      <DependentUpon>Loc_DataContentUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Loc_DataLocalisationContentUC.xaml.cs">
+      <DependentUpon>Loc_DataLocalisationContentUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\PakContentUC.xaml.cs">
       <DependentUpon>PakContentUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <Compile Include="Windows\Loc_DataTextEditor.xaml.cs">
+      <DependentUpon>Loc_DataTextEditor.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -124,7 +133,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\Loc_DataContentUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Loc_DataLocalisationContentUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\PakContentUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Loc_DataTextEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,6 +178,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LOC_DATALib\LOC_DATALib.csproj">
+      <Project>{09c4d87e-4580-4bd7-b5a8-f265a2bde6df}</Project>
+      <Name>LOC_DATALib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PAKLib\PAKLib.csproj">
       <Project>{3021504e-41bb-43ff-ae86-a6582876286a}</Project>
       <Name>PAKLib</Name>

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mr. Zurkon", "Mr. Zurkon\Mr. Zurkon.csproj", "{1D85EC50-7AF1-4E9F-921D-AB666B7FC20D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PAKLib", "PAKLib\PAKLib.csproj", "{3021504E-41BB-43FF-AE86-A6582876286A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PAKLib", "PAKLib\PAKLib.csproj", "{3021504E-41BB-43FF-AE86-A6582876286A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LOC_DATALib", "LOC_DATALib\LOC_DATALib.csproj", "{09C4D87E-4580-4BD7-B5A8-F265A2BDE6DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3021504E-41BB-43FF-AE86-A6582876286A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3021504E-41BB-43FF-AE86-A6582876286A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3021504E-41BB-43FF-AE86-A6582876286A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C4D87E-4580-4BD7-B5A8-F265A2BDE6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C4D87E-4580-4BD7-B5A8-F265A2BDE6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C4D87E-4580-4BD7-B5A8-F265A2BDE6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C4D87E-4580-4BD7-B5A8-F265A2BDE6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
