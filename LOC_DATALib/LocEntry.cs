@@ -36,14 +36,12 @@ namespace LOC_DATALib
                     index = textBytesString.IndexOf(kvp.Key, index + 1);
                     if (index != -1 && index % 2 == 0)
                     {
-                        if (this.ID == 235) Console.WriteLine(textBytesString + " | " + kvp.Key);
                         textBytesString = textBytesString.Remove(index, kvp.Key.Length).Insert(index, kvp.Value);
-
                     }
                 } while (index != -1);
             }
-
-            return Util.StringToByteArray(textBytesString+"00");
+            if (!textBytesString.EndsWith("00")) textBytesString += "00";
+            return Util.StringToByteArray(textBytesString);
         }
     }
 }

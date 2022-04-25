@@ -1,4 +1,6 @@
 ﻿using LOC_DATALib;
+using Mr.Zurkon.Windows;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,6 +13,7 @@ namespace Mr.Zurkon.UserControls
     public partial class Loc_DataLocalisationContentUC : UserControl
     {
         Localisation localisation;
+
 
         public Loc_DataLocalisationContentUC(Localisation localisation)
         {
@@ -32,13 +35,20 @@ namespace Mr.Zurkon.UserControls
             
             if(dataGridCellTarget.Column.DisplayIndex == 1) //Text
             {
-                //TODO
-                MessageBox.Show(dataGridCellTarget.Content.ToString());
                 TextBox tb = (TextBox)dataGridCellTarget.Content;
-                tb.Text = "test12345";
-                dataGridCellTarget.IsEditing = false;
-
+                Loc_DataTextEditor txtedit = new Loc_DataTextEditor(tb.Text);
                 this.IsEnabled = false;
+                Nullable<bool> result = txtedit.ShowDialog();
+                if (result == true)
+                {
+                    tb.Text = txtedit.EditedString;
+                    System.Windows.Data.BindingExpression be = tb.GetBindingExpression(TextBox.TextProperty);
+                    be.UpdateSource();
+                }
+
+                dataGridCellTarget.IsEditing = false;
+                this.IsEnabled = true;
+
             }
         }
     }

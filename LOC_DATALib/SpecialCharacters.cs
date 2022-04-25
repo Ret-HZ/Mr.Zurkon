@@ -20,7 +20,7 @@ namespace LOC_DATALib
             { "86", "<button=d-pad_down/>" },
             { "87", "<button=d-pad_left/>" },
             { "88", "<button=d-pad_right/>" },
-            { "89", "<symbol=.../>" },
+            { "89", "<symbol=ellipsis/>" },
             { "8a", "<symbol=registered/>" },
             { "8b", "<button=d-pad_all/>" },
             { "8e", "<button=volume_up/>" },
@@ -44,7 +44,7 @@ namespace LOC_DATALib
             { "900b", "<text_color=green>" },
             { "900c", "<text_color=orange3>" },
             { "900d", "<text_color=purple>" },
-            { "900e", "<text_color=orange_dark>" },
+            { "900e", "<text_color=brown>" },
             { "900f", "<text_color=white>" },
             { "9010", "<text_color=yellow>" },
 

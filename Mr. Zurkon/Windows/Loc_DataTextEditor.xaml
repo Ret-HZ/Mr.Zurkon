@@ -9,6 +9,134 @@
         WindowStartupLocation="CenterScreen"
         Title="Loc_DataTextEditor" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Header="Buttons" Grid.Row="0" Margin="5" >
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Button x:Name="btn_button_x" BorderThickness="0" Background="Transparent" Click="btn_button_x_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_x.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_square" BorderThickness="0" Background="Transparent" Click="btn_button_square_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_square.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_triangle" BorderThickness="0" Background="Transparent" Click="btn_button_triangle_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_triangle.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_circle" BorderThickness="0" Background="Transparent" Click="btn_button_circle_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_circle.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_joystick" BorderThickness="0" Background="Transparent" Click="btn_button_joystick_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_joystick.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_dpad_up" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_up_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_up.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_dpad_down" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_down_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_down.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_dpad_left" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_left_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_left.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_dpad_right" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_right_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_right.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_dpad_all" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_all_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_all.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_volume_up" BorderThickness="0" Background="Transparent" Click="btn_button_volume_up_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_volume_up.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_volume_down" BorderThickness="0" Background="Transparent" Click="btn_button_volume_down_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_volume_down.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_l" BorderThickness="0" Background="Transparent" Click="btn_button_l_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_l.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_r" BorderThickness="0" Background="Transparent" Click="btn_button_r_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_r.png"/>
+                    </Button>
+                    <Button x:Name="btn_button_select" BorderThickness="0" Background="Transparent" Click="btn_button_select_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_select.png" Width="34"/>
+                    </Button>
+                    <Button x:Name="btn_button_start" BorderThickness="0" Background="Transparent" Click="btn_button_start_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_start.png" Width="34"/>
+                    </Button>
+                    <Button x:Name="btn_button_home" BorderThickness="0" Background="Transparent" Click="btn_button_home_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_home.png" Width="34"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Header="Symbols" Margin="5">
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Button x:Name="btn_symbol_ellipsis" BorderThickness="0" Background="Transparent" Click="btn_symbol_ellipsis_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/symbol_ellipsis.png"/>
+                    </Button>
+                    <Button x:Name="btn_symbol_registered" BorderThickness="0" Background="Transparent" Click="btn_symbol_registered_Click" >
+                        <Image Source="/Mr.Zurkon;component/Resources/Images/symbol_registered.png"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="Text Colors" Margin="5">
+                <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
+                    <Button x:Name="btn_color_orange" BorderThickness="0" Background="Transparent" Click="btn_color_orange_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#D46F00" Stroke="#7E4E00" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_red" BorderThickness="0" Background="Transparent" Click="btn_color_red_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#F10000" Stroke="#700000" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_magenta" BorderThickness="0" Background="Transparent" Click="btn_color_magenta_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#F100F8" Stroke="#5300AF" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_pink" BorderThickness="0" Background="Transparent" Click="btn_color_pink_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#F17BF8" Stroke="#4F3DAE" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_cyan" BorderThickness="0" Background="Transparent" Click="btn_color_cyan_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#79F4F8" Stroke="#2A7BAF" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_salmon" BorderThickness="0" Background="Transparent" Click="btn_color_salmon_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#FE7F80" Stroke="#533E58" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_blue" BorderThickness="0" Background="Transparent" Click="btn_color_blue_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#0000F4" Stroke="#0000AF" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_green" BorderThickness="0" Background="Transparent" Click="btn_color_green_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#00FC00" Stroke="#007B00" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_purple" BorderThickness="0" Background="Transparent" Click="btn_color_purple_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#7A007E" Stroke="#2A0058" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_brown" BorderThickness="0" Background="Transparent" Click="btn_color_brown_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#7C3E00" Stroke="#2A1F00" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_white" BorderThickness="0" Background="Transparent" Click="btn_color_white_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#E5EBF2" Stroke="#537BAF" StrokeThickness="4"/>
+                    </Button>
+                    <Button x:Name="btn_color_yellow" BorderThickness="0" Background="Transparent" Click="btn_color_yellow_Click" >
+                        <Rectangle Width="18" Height="18" Fill="#F9FA00" Stroke="#537B00" StrokeThickness="4"/>
+                    </Button>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
+        <TextBox x:Name="txt_edit" Grid.Row="1" Text="{Binding Path=Text, Mode=TwoWay}" TextWrapping="Wrap" Margin="5"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,5">
+            <Button x:Name="btn_save" Content="Save" Margin="5,0,5,0" Click="btn_save_Click"/>
+            <Button x:Name="btn_cancel" Content="Cancel" Margin="5,0,5,0" Click="btn_cancel_Click"/>
+        </StackPanel>
+
     </Grid>
 </mah:MetroWindow>
