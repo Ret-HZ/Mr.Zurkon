@@ -35,6 +35,11 @@ namespace Mr.Zurkon.UserControls
             
             if(dataGridCellTarget.Column.DisplayIndex == 1) //Text
             {
+                if (dataGridCellTarget.Content.GetType() == typeof(TextBlock)) // This happens as a result of double right click
+                {
+                    dataGridCellTarget.IsEditing = false;
+                    return;
+                }
                 TextBox tb = (TextBox)dataGridCellTarget.Content;
                 Loc_DataTextEditor txtedit = new Loc_DataTextEditor(tb.Text);
                 this.IsEnabled = false;
