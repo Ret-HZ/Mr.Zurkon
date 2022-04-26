@@ -7,6 +7,8 @@
         xmlns:local="clr-namespace:Mr.Zurkon.Windows"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        MinHeight="450"
+        MinWidth="800"
         Title="Loc_DataTextEditor" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
