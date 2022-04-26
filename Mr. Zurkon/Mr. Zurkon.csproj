@@ -225,6 +225,9 @@
       <DependentUpon>PakContentUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <Compile Include="Windows\About_MrZurkon.xaml.cs">
+      <DependentUpon>About_MrZurkon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Loc_DataTextEditor.xaml.cs">
       <DependentUpon>Loc_DataTextEditor.xaml</DependentUpon>
     </Compile>
@@ -249,6 +252,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\PakContentUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\About_MrZurkon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -353,6 +360,9 @@
   <ItemGroup>
     <Resource Include="Resources\Images\symbol_ellipsis.png" />
     <Resource Include="Resources\Images\symbol_registered.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\mrzurkon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />

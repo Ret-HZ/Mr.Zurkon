@@ -25,6 +25,9 @@
                 <MenuItem x:Name="mi_openFileLOCALDAT" Header="Open LOCALDAT" Click="MenuOpenFileDialogLOCALDAT"/>
             </MenuItem>
             <MenuItem Header="About">
+                <MenuItem x:Name="mi_aboutMrZurkon" Header="Mr. Zurkon" Click="MenuOpenAboutMrZurkon"/>
+                <MenuItem x:Name="mi_aboutPAKTool" Header="PAKTool" Click="MenuOpenAboutPAKTool"/>
+                <MenuItem x:Name="mi_aboutRelocalizer" Header="Relocalizer" Click="MenuOpenAboutRelocalizer"/>
             </MenuItem>
         </Menu>
 

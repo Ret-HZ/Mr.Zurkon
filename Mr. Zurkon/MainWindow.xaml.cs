@@ -1,7 +1,9 @@
 ﻿using LOC_DATALib;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using Mr.Zurkon.UserControls;
+using Mr.Zurkon.Windows;
 using PAKLib;
 using System;
 using System.IO;
@@ -119,6 +121,24 @@ namespace Mr.Zurkon
         private void MenuOpenFileDialogLOCALDAT(object sender, RoutedEventArgs e)
         {
             OpenFileDialogGeneric("LOCALDAT Localization Data (*.bin)|*.bin");
+        }
+
+        private void MenuOpenAboutMrZurkon(object sender, RoutedEventArgs e)
+        {
+            About_MrZurkon amz = new About_MrZurkon();
+            amz.Show();
+        }
+
+        private void MenuOpenAboutPAKTool(object sender, RoutedEventArgs e)
+        {
+            this.ShowMessageAsync("About PAKTool", "PAKTool can open, preview, edit and save .PAK files.\n\n" +
+                "PAKs usually contain GIM images/textures, although they can also contain models (PS2).");
+        }
+
+        private void MenuOpenAboutRelocalizer(object sender, RoutedEventArgs e)
+        {
+            this.ShowMessageAsync("About Relocalizer", "Relocalizer can open, preview, edit and save Localization Data (LOC_DATA) files.\n\n" +
+                "LOC_DATA files contain every text string used in the game, with all their localizations to different supported languages.");
         }
     }
 }
