@@ -2,6 +2,8 @@
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using System;
+using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -49,6 +51,32 @@ namespace Mr.Zurkon.UserControls
                     var metroWindow = (Application.Current.MainWindow as MahApps.Metro.Controls.MetroWindow);
                     metroWindow.ShowMessageAsync("", "LOC_DATA saved!");
                 } catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("An error occurred:\n{0}\n{1}", ex.Message, ex.StackTrace), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+
+        private void btn_exportcsv_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult result = dialog.ShowDialog();
+            if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            {
+                try
+                {
+                    for (int i = 0; i < locdata.GetLocalisationAmount(); i++)
+                    {
+                        string path = String.Format("{0}/Loc{1}.csv", dialog.FileName, i+1);
+                        string text = locdata.GetLocalisationDataAsCSV(i);
+                        File.WriteAllText(path, text, Encoding.GetEncoding(28591));
+                    }
+                    var metroWindow = Application.Current.MainWindow as MahApps.Metro.Controls.MetroWindow;
+                    metroWindow.ShowMessageAsync("", "LOC_DATA exported as CSV!");
+                }
+                catch (Exception ex)
                 {
                     MessageBox.Show(String.Format("An error occurred:\n{0}\n{1}", ex.Message, ex.StackTrace), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 }

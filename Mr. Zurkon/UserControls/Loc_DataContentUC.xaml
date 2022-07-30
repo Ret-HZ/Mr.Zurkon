@@ -18,6 +18,7 @@
         <TabControl x:Name="tabcontrol_localisations" Grid.Row="1" TabStripPlacement="Left"/>
         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,5">
             <Button x:Name="btn_save" Content="Save" Margin="5,0,5,0" Click="btn_save_Click"/>
+            <Button x:Name="btn_exportcsv" Content="Export as CSV" Margin="5,0,5,0" Click="btn_exportcsv_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
