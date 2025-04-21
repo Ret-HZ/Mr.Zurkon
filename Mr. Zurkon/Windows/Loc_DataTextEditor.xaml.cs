@@ -18,13 +18,13 @@ namespace Mr.Zurkon.Windows
             InitializeComponent();
             this.Title = "LOC Editor";
             DataContext = this;
-            this.Text = String.Copy(text).Replace("\0", string.Empty);
+            this.Text = text.Replace("\0", string.Empty);
         }
 
 
         private void btn_save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            EditedString = String.Copy(txt_edit.Text);
+            EditedString = new string(txt_edit.Text);
             this.DialogResult = true;
             this.Close();
         }

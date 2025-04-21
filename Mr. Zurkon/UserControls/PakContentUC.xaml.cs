@@ -208,14 +208,16 @@ namespace Mr.Zurkon.UserControls
 
         private void btn_export_all_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
-            Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult result = dialog.ShowDialog();
-            if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            var openFolderDialog = new OpenFolderDialog
+            {
+                Title = "Choose where to extract the contents",
+            };
+
+            if (openFolderDialog.ShowDialog() == true)
             {
                 for(int i=0; i<PakFile.GetPAKFileAmount(); i++)
                 {
-                    string path = String.Format("{0}/{1}", dialog.FileName, PakFile.GetFilenameForExport(i));
+                    string path = String.Format("{0}/{1}", openFolderDialog.FolderName, PakFile.GetFilenameForExport(i));
                     PakFile.ExportFile(i, path);
                 }
             }

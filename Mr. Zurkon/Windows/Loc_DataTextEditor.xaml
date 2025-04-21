@@ -27,55 +27,55 @@
             <GroupBox Header="Buttons" Grid.Row="0" Margin="5" >
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button x:Name="btn_button_x" BorderThickness="0" Background="Transparent" Click="btn_button_x_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_x.png"/>
+                        <Image Source="/Resources/Images/button_x.png"/>
                     </Button>
                     <Button x:Name="btn_button_square" BorderThickness="0" Background="Transparent" Click="btn_button_square_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_square.png"/>
+                        <Image Source="/Resources/Images/button_square.png"/>
                     </Button>
                     <Button x:Name="btn_button_triangle" BorderThickness="0" Background="Transparent" Click="btn_button_triangle_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_triangle.png"/>
+                        <Image Source="/Resources/Images/button_triangle.png"/>
                     </Button>
                     <Button x:Name="btn_button_circle" BorderThickness="0" Background="Transparent" Click="btn_button_circle_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_circle.png"/>
+                        <Image Source="/Resources/Images/button_circle.png"/>
                     </Button>
                     <Button x:Name="btn_button_joystick" BorderThickness="0" Background="Transparent" Click="btn_button_joystick_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_joystick.png"/>
+                        <Image Source="/Resources/Images/button_joystick.png"/>
                     </Button>
                     <Button x:Name="btn_button_dpad_up" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_up_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_up.png"/>
+                        <Image Source="/Resources/Images/button_d-pad_up.png"/>
                     </Button>
                     <Button x:Name="btn_button_dpad_down" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_down_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_down.png"/>
+                        <Image Source="/Resources/Images/button_d-pad_down.png"/>
                     </Button>
                     <Button x:Name="btn_button_dpad_left" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_left_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_left.png"/>
+                        <Image Source="/Resources/Images/button_d-pad_left.png"/>
                     </Button>
                     <Button x:Name="btn_button_dpad_right" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_right_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_right.png"/>
+                        <Image Source="/Resources/Images/button_d-pad_right.png"/>
                     </Button>
                     <Button x:Name="btn_button_dpad_all" BorderThickness="0" Background="Transparent" Click="btn_button_dpad_all_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_d-pad_all.png"/>
+                        <Image Source="/Resources/Images/button_d-pad_all.png"/>
                     </Button>
                     <Button x:Name="btn_button_volume_up" BorderThickness="0" Background="Transparent" Click="btn_button_volume_up_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_volume_up.png"/>
+                        <Image Source="/Resources/Images/button_volume_up.png"/>
                     </Button>
                     <Button x:Name="btn_button_volume_down" BorderThickness="0" Background="Transparent" Click="btn_button_volume_down_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_volume_down.png"/>
+                        <Image Source="/Resources/Images/button_volume_down.png"/>
                     </Button>
                     <Button x:Name="btn_button_l" BorderThickness="0" Background="Transparent" Click="btn_button_l_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_l.png"/>
+                        <Image Source="/Resources/Images/button_l.png"/>
                     </Button>
                     <Button x:Name="btn_button_r" BorderThickness="0" Background="Transparent" Click="btn_button_r_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_r.png"/>
+                        <Image Source="/Resources/Images/button_r.png"/>
                     </Button>
                     <Button x:Name="btn_button_select" BorderThickness="0" Background="Transparent" Click="btn_button_select_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_select.png" Width="34"/>
+                        <Image Source="/Resources/Images/button_select.png" Width="34"/>
                     </Button>
                     <Button x:Name="btn_button_start" BorderThickness="0" Background="Transparent" Click="btn_button_start_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_start.png" Width="34"/>
+                        <Image Source="/Resources/Images/button_start.png" Width="34"/>
                     </Button>
                     <Button x:Name="btn_button_home" BorderThickness="0" Background="Transparent" Click="btn_button_home_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/button_home.png" Width="34"/>
+                        <Image Source="/Resources/Images/button_home.png" Width="34"/>
                     </Button>
                 </StackPanel>
             </GroupBox>
@@ -83,10 +83,10 @@
             <GroupBox Grid.Row="1" Header="Symbols" Margin="5">
                 <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" >
                     <Button x:Name="btn_symbol_ellipsis" BorderThickness="0" Background="Transparent" Click="btn_symbol_ellipsis_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/symbol_ellipsis.png"/>
+                        <Image Source="/Resources/Images/symbol_ellipsis.png"/>
                     </Button>
                     <Button x:Name="btn_symbol_registered" BorderThickness="0" Background="Transparent" Click="btn_symbol_registered_Click" >
-                        <Image Source="/Mr.Zurkon;component/Resources/Images/symbol_registered.png"/>
+                        <Image Source="/Resources/Images/symbol_registered.png"/>
                     </Button>
                 </StackPanel>
             </GroupBox>

@@ -10,12 +10,13 @@ namespace Mr.Zurkon.Windows
         public About_MrZurkon()
         {
             InitializeComponent();
-            txt_version.Text = Util.GetAppTitle();
+            txt_version.Text = $"v{Util.GetAssemblyVersion()}";
         }
+
 
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            System.Diagnostics.Process.Start(e.Uri.ToString());
+            System.Diagnostics.Process.Start("explorer", e.Uri.ToString());
         }
     }
 }

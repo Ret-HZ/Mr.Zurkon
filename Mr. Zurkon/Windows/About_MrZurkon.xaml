@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         Title="About Mr. Zurkon" Height="550" Width="450">
     <StackPanel>
-        <Image Source="/Mr.Zurkon;component/Resources/Images/mrzurkon.png" Height="256" Width="256" Margin="5"/>
+        <Image Source="/Resources/Images/mrzurkon.png" Height="256" Width="256" Margin="5"/>
 
         <TextBlock Margin="20, 20, 20, 0" TextWrapping="Wrap">
             <Bold>Mr. Zurkon</Bold> is a Work In Progress multi-tool for <Italic>Ratchet &amp; Clank: Size Matters</Italic> and <Italic>Secret Agent Clank</Italic> (developed by <Hyperlink NavigateUri="https://en.wikipedia.org/wiki/High_Impact_Games" RequestNavigate="Hyperlink_RequestNavigate">High Impact Games</Hyperlink>).
@@ -21,15 +21,15 @@
         <TextBlock Margin="20, 20, 20, 0" Text="Source:">
             <LineBreak/>
             <Hyperlink 
-            NavigateUri="https://github.com/CapitanRetraso/Mr.Zurkon"
+            NavigateUri="https://github.com/Ret-HZ/Mr.Zurkon"
             RequestNavigate="Hyperlink_RequestNavigate">
-            https://github.com/CapitanRetraso/Mr.Zurkon
+            https://github.com/Ret-HZ/Mr.Zurkon
             </Hyperlink>
         </TextBlock>
 
         <TextBlock Margin="20, 20, 20, 0">
             <Hyperlink
-                NavigateUri="https://github.com/CapitanRetraso/Mr.Zurkon/issues"
+                NavigateUri="https://github.com/Ret-HZ/Mr.Zurkon/issues"
                 RequestNavigate="Hyperlink_RequestNavigate">
                 Report an issue
             </Hyperlink>

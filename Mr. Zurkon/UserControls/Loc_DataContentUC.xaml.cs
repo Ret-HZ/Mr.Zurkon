@@ -60,16 +60,18 @@ namespace Mr.Zurkon.UserControls
 
         private void btn_exportcsv_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
-            Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult result = dialog.ShowDialog();
-            if (result == Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok)
+            var openFolderDialog = new OpenFolderDialog
+            {
+                Title = "Choose where to extract the contents",
+            };
+
+            if (openFolderDialog.ShowDialog() == true)
             {
                 try
                 {
                     for (int i = 0; i < locdata.GetLocalisationAmount(); i++)
                     {
-                        string path = String.Format("{0}/Loc{1}.csv", dialog.FileName, i+1);
+                        string path = String.Format("{0}/Loc{1}.csv", openFolderDialog.FolderName, i+1);
                         string text = locdata.GetLocalisationDataAsCSV(i);
                         File.WriteAllText(path, text, Encoding.GetEncoding(28591));
                     }

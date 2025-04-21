@@ -19,7 +19,7 @@ namespace Mr.Zurkon
         public MainWindow()
         {
             InitializeComponent();
-            this.Title = Util.GetAppTitle();
+            this.Title = $"{Util.GetAssemblyProductName()} {Util.GetAssemblyVersion()}";
         }
 
 
@@ -97,7 +97,7 @@ namespace Mr.Zurkon
 
                     default:
                         {
-                            MessageBox.Show("Format not supported", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            Util.ShowMessageBox("Format not supported", "Error");
                             break;
                         }
                 }
