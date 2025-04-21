@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace LOC_DATALib
+namespace BoltUtils.LOC_DATA
 {
     public class LOC_DATA
     {

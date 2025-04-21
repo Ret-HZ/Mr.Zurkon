@@ -2,7 +2,7 @@
 using System.IO;
 using Yarhl.IO;
 
-namespace PAKLib
+namespace BoltUtils.PAK
 {
     public static class PakReader
     {

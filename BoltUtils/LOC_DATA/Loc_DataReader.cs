@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Yarhl.IO;
 
-namespace LOC_DATALib
+namespace BoltUtils.LOC_DATA
 {
     public class Loc_DataReader
     {

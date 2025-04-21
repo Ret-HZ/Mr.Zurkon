@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Yarhl.IO;
 
-namespace PAKLib
+namespace BoltUtils.PAK
 {
     public class PakWriter
     {

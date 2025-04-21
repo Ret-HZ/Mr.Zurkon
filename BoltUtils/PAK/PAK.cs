@@ -1,11 +1,11 @@
-﻿using PAKLib.GIM;
+﻿using BoltUtils.PAK.GIM;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Yarhl.IO;
 
-namespace PAKLib
+namespace BoltUtils.PAK
 {
     public class PAK
     {
@@ -134,7 +134,7 @@ namespace PAKLib
             string filename = "unknown_name";
             if (FileFormat[fileIndex] == PakContentFormats.Format.GIM)
             {
-                filename = FileData[fileIndex].filename;
+                filename = FileData[fileIndex].Filename;
                 if (filename == "No Data" || String.IsNullOrWhiteSpace(filename))
                 {
                     filename = "unknown_texture_name";

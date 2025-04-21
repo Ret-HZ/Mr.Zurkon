@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace LOC_DATALib
+namespace BoltUtils.LOC_DATA
 {
     public class SpecialCharacters
     {

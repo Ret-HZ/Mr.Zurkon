@@ -1,4 +1,4 @@
-﻿using LOC_DATALib;
+﻿using BoltUtils.LOC_DATA;
 using Mr.Zurkon.Windows;
 using System;
 using System.Windows;

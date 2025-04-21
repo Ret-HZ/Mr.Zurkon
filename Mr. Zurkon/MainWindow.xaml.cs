@@ -1,14 +1,13 @@
-﻿using LOC_DATALib;
+﻿using BoltUtils.LOC_DATA;
+using BoltUtils.PAK;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using Mr.Zurkon.UserControls;
 using Mr.Zurkon.Windows;
-using PAKLib;
 using System;
 using System.IO;
 using System.Windows;
-using Yarhl.IO;
 
 namespace Mr.Zurkon
 {
@@ -78,20 +77,29 @@ namespace Mr.Zurkon
         /// <param name="path"></param>
         private void CheckMagic(string path)
         {
-            using (var stream = DataStreamFactory.FromFile(path, FileOpenMode.Read))
+            using (Stream stream = new MemoryStream(File.ReadAllBytes(path)))
+            using (BinaryReader reader = new BinaryReader(stream))
             {
-                var reader = new DataReader(stream)
+                int magicBytes = reader.ReadInt32();
+                switch (magicBytes)
                 {
-                    Endianness = EndiannessMode.LittleEndian,
-                };
+                    case 1263223120: // PAKK
+                        {
+                            OpenPAK(path);
+                            break;
+                        }
 
+                    case 1598246732: // LOC_
+                        {
+                            OpenLOC_DATA(path);
+                            break;
+                        }
 
-                string magic = reader.ReadString(4);
-                switch (magic)
-                {
-                    case "PAKK": OpenPAK(path); break;
-                    case "LOC_": OpenLOC_DATA(path); break;
-                    default: MessageBox.Show("Format not supported", "Error", MessageBoxButton.OK, MessageBoxImage.Error); break;
+                    default:
+                        {
+                            MessageBox.Show("Format not supported", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            break;
+                        }
                 }
             }
         }

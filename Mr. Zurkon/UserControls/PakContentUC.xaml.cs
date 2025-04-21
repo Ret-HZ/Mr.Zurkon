@@ -1,6 +1,6 @@
-﻿using Microsoft.Win32;
-using PAKLib;
-using PAKLib.GIM;
+﻿using BoltUtils.PAK;
+using BoltUtils.PAK.GIM;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,10 +39,10 @@ namespace Mr.Zurkon.UserControls
                     data.Add(new FileData()
                     {
                         Format = PakContentFormats.Extension[formats[i]],
-                        Filename = gimdata.filename,
-                        Author = gimdata.username,
-                        Timestamp = gimdata.timestamp,
-                        Origin = gimdata.originator
+                        Filename = gimdata.Filename,
+                        Author = gimdata.Username,
+                        Timestamp = gimdata.Timestamp,
+                        Origin = gimdata.Originator
                     });;
                 }
 
@@ -159,10 +159,10 @@ namespace Mr.Zurkon.UserControls
                 if (PakFile.GetFileFormat(index) == PakContentFormats.Format.GIM)
                 {
                     GimData gimdata = PakFile.GetFileData()[index];
-                    fd[index].Filename = gimdata.filename;
-                    fd[index].Author = gimdata.username;
-                    fd[index].Timestamp = gimdata.timestamp;
-                    fd[index].Origin = gimdata.originator;
+                    fd[index].Filename = gimdata.Filename;
+                    fd[index].Author = gimdata.Username;
+                    fd[index].Timestamp = gimdata.Timestamp;
+                    fd[index].Origin = gimdata.Originator;
                 }
             }
         }
@@ -180,10 +180,10 @@ namespace Mr.Zurkon.UserControls
                 fd.Add(new FileData()
                 {
                     Format = PakContentFormats.Extension[PakFile.GetFileFormat(index)],
-                    Filename = gimdata.filename,
-                    Author = gimdata.username,
-                    Timestamp = gimdata.timestamp,
-                    Origin = gimdata.originator
+                    Filename = gimdata.Filename,
+                    Author = gimdata.Username,
+                    Timestamp = gimdata.Timestamp,
+                    Origin = gimdata.Originator
                 }); ;
             }
             else
