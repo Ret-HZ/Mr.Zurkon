@@ -47,7 +47,7 @@ namespace Mr.Zurkon.UserControls
             {
                 try
                 {
-                    Loc_DataWriter.WriteLOC_DATA(saveFileDialog.FileName, locdata);
+                    Loc_DataWriter.WriteLOC_DATAToFile(locdata, saveFileDialog.FileName);
                     var metroWindow = (Application.Current.MainWindow as MahApps.Metro.Controls.MetroWindow);
                     metroWindow.ShowMessageAsync("", "LOC_DATA saved!");
                 } catch (Exception ex)
