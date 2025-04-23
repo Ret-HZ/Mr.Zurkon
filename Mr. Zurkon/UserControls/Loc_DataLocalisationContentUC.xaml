@@ -11,7 +11,7 @@
 
         <GroupBox Header="Localisation Data">
 
-            <DataGrid x:Name="datagrid_entries" EnableColumnVirtualization="True" EnableRowVirtualization="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" ScrollViewer.CanContentScroll="True">
+            <DataGrid x:Name="datagrid_entries" EnableColumnVirtualization="True" EnableRowVirtualization="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="False" ScrollViewer.CanContentScroll="True" FrozenColumnCount="1">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MahApps.Styles.DataGridCell}">
                         <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
