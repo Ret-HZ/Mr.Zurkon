@@ -8,17 +8,12 @@ namespace BoltUtils.LOC_DATA
     public class Loc_DataReader
     {
         /// <summary>
-        /// Text encoding used by SM and SAC.
-        /// </summary>
-        private static HighImpactEncoding HIEncoding = new HighImpactEncoding();
-
-
-        /// <summary>
         /// Reads a LOC_DATA file.
         /// </summary>
         /// <param name="reader">The <see cref="DataReader"/>.</param>
+        /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
         /// <returns>A <see cref="LOC_DATA"/> object.</returns>
-        private static LOC_DATA ReadLOC_DATA(DataReader reader)
+        private static LOC_DATA ReadLOC_DATA(DataReader reader, EncodingVariant encodingVariant)
         {
             string magic = reader.ReadString(8);
             if (magic != "LOC_DATA")
@@ -26,6 +21,7 @@ namespace BoltUtils.LOC_DATA
                 throw new Exception("Invalid magic. Expected LOC_DATA");
             }
             LOC_DATA locdata = new LOC_DATA();
+            HighImpactEncoding HIEncoding = new HighImpactEncoding(encodingVariant);
 
             locdata.unk0x08 = reader.ReadByte(); //Version? Type?
             byte[] unk0x09 = reader.ReadBytes(0x3); //Always 0x010612
@@ -62,7 +58,7 @@ namespace BoltUtils.LOC_DATA
                     int id = reader.ReadInt32();
                     int ptrString = reader.ReadInt32();
                     reader.Stream.PushToPosition(TDEFstartPointer + ptrString);
-                    string text = ReadString(reader);
+                    string text = ReadString(reader, HIEncoding);
 
                     localisation.AddEntry(id, text);
                     reader.Stream.PopPosition();
@@ -80,8 +76,9 @@ namespace BoltUtils.LOC_DATA
         /// Reads a LOC_DATA file.
         /// </summary>
         /// <param name="path">The path to the LOC_DATA file.</param>
+        /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
         /// <returns>A <see cref="LOC_DATA"/> object.</returns>
-        public static LOC_DATA ReadLOC_DATA(string path)
+        public static LOC_DATA ReadLOC_DATA(string path, EncodingVariant encodingVariant)
         {
             using (Stream stream = new MemoryStream(File.ReadAllBytes(path)))
             using (var dataStream = DataStreamFactory.FromStream(stream))
@@ -91,7 +88,7 @@ namespace BoltUtils.LOC_DATA
                     Endianness = EndiannessMode.LittleEndian,
                 };
 
-                return ReadLOC_DATA(reader);
+                return ReadLOC_DATA(reader, encodingVariant);
             }
         }
 
@@ -102,8 +99,9 @@ namespace BoltUtils.LOC_DATA
         /// <param name="fileBytes">The LOC_DATA file as byte array.</param>
         /// <param name="offset">The location in the array to start reading data from.</param>
         /// <param name="length">The number of bytes to read from the array.</param>
+        /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
         /// <returns>A <see cref="LOC_DATA"/> object.</returns>
-        public static LOC_DATA ReadLOC_DATA(byte[] fileBytes, int offset = 0, int length = 0)
+        public static LOC_DATA ReadLOC_DATA(byte[] fileBytes, EncodingVariant encodingVariant, int offset = 0, int length = 0)
         {
             if (length == 0) length = fileBytes.Length;
             using (var stream = new MemoryStream(fileBytes, offset, length))
@@ -114,17 +112,18 @@ namespace BoltUtils.LOC_DATA
                     Endianness = EndiannessMode.LittleEndian,
                 };
 
-                return ReadLOC_DATA(reader);
+                return ReadLOC_DATA(reader, encodingVariant);
             }
         }
 
 
         /// <summary>
-        /// Reads a string using the <see cref="HighImpactEncoding"/>.
+        /// Reads a string using the provided <see cref="HighImpactEncoding"/>.
         /// </summary>
         /// <param name="reader">The <see cref="DataReader"/>.</param>
+        /// <param name="encoding">The <see cref="HighImpactEncoding"/> to use.</param>
         /// <returns>A string.</returns>
-        private static string ReadString(DataReader reader)
+        private static string ReadString(DataReader reader, HighImpactEncoding encoding)
         {
             List<byte> stringBytes = new List<byte>();
             byte readByte;
@@ -135,7 +134,7 @@ namespace BoltUtils.LOC_DATA
             }
             while (readByte != 0x00);
 
-            return HIEncoding.GetString(stringBytes.ToArray());
+            return encoding.GetString(stringBytes.ToArray());
         }
     }
 }

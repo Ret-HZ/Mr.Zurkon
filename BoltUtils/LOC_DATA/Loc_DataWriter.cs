@@ -7,17 +7,15 @@ namespace BoltUtils.LOC_DATA
     public class Loc_DataWriter
     {
         /// <summary>
-        /// Text encoding used by SM and SAC.
-        /// </summary>
-        private static HighImpactEncoding HIEncoding = new HighImpactEncoding();
-
-
-        /// <summary>
         /// Writes a LOC_DATA file.
         /// </summary>
         /// <param name="writer">The <see cref="DataWriter"/>.</param>
-        private static void WriteLOC_DATA(DataWriter writer, LOC_DATA locdata)
+        /// <param name="locdata">The <see cref="LOC_DATA"/> to write.</param>
+        /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
+        private static void WriteLOC_DATA(DataWriter writer, LOC_DATA locdata, EncodingVariant encodingVariant)
         {
+            HighImpactEncoding HIEncoding = new HighImpactEncoding(encodingVariant);
+
             writer.Write("LOC_DATA", false);
             writer.Write(locdata.unk0x08);
 
@@ -89,8 +87,9 @@ namespace BoltUtils.LOC_DATA
         /// Writes a <see cref="LOC_DATA"/> to a file.
         /// </summary>
         /// <param name="locdata">The <see cref="LOC_DATA"/> to write.</param>
+        /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
         /// <param name="path">The destination file path.</param>
-        public static void WriteLOC_DATAToFile(LOC_DATA locdata, string path)
+        public static void WriteLOC_DATAToFile(LOC_DATA locdata, EncodingVariant encodingVariant, string path)
         {
             using (Stream stream = new MemoryStream())
             using (DataStream dataStream = DataStreamFactory.FromStream(stream))
@@ -100,7 +99,7 @@ namespace BoltUtils.LOC_DATA
                     Endianness = EndiannessMode.LittleEndian,
                 };
 
-                WriteLOC_DATA(writer, locdata);
+                WriteLOC_DATA(writer, locdata, encodingVariant);
                 dataStream.WriteTo(path);
             }
         }
@@ -110,7 +109,8 @@ namespace BoltUtils.LOC_DATA
         /// Writes a <see cref="LOC_DATA"/> to a <see cref="Stream"/>.
         /// </summary>
         /// <param name="locdata">The <see cref="LOC_DATA"/> to write.</param>
-        public static Stream WriteLOC_DATAToStream(LOC_DATA locdata)
+        /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
+        public static Stream WriteLOC_DATAToStream(LOC_DATA locdata, EncodingVariant encodingVariant)
         {
             using (DataStream dataStream = DataStreamFactory.FromMemory())
             {
@@ -119,7 +119,7 @@ namespace BoltUtils.LOC_DATA
                     Endianness = EndiannessMode.LittleEndian,
                 };
 
-                WriteLOC_DATA(writer, locdata);
+                WriteLOC_DATA(writer, locdata, encodingVariant);
                 Stream stream = new MemoryStream();
                 writer.Stream.WriteTo(stream);
                 return stream;
@@ -131,7 +131,8 @@ namespace BoltUtils.LOC_DATA
         /// Writes a <see cref="LOC_DATA"/> to a byte array.
         /// </summary>
         /// <param name="locdata">The <see cref="LOC_DATA"/> to write.</param>
-        public static byte[] WriteLOC_DATAToArray(LOC_DATA locdata)
+        /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
+        public static byte[] WriteLOC_DATAToArray(LOC_DATA locdata, EncodingVariant encodingVariant)
         {
             using (Stream stream = new MemoryStream())
             using (DataStream dataStream = DataStreamFactory.FromStream(stream))
@@ -141,7 +142,7 @@ namespace BoltUtils.LOC_DATA
                     Endianness = EndiannessMode.LittleEndian,
                 };
 
-                WriteLOC_DATA(writer, locdata);
+                WriteLOC_DATA(writer, locdata, encodingVariant);
                 return writer.Stream.ToArray();
             }
         }
