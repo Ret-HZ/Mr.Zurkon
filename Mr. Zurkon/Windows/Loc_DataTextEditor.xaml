@@ -133,7 +133,7 @@
             </GroupBox>
         </Grid>
 
-        <TextBox x:Name="txt_edit" Grid.Row="1" Text="{Binding Path=Text, Mode=TwoWay}" TextWrapping="Wrap" Margin="5"/>
+        <TextBox x:Name="txt_edit" Grid.Row="1" Text="{Binding Path=Text, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap" Margin="5"/>
 
         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,5">
             <Button x:Name="btn_save" Content="Save" Margin="5,0,5,0" Click="btn_save_Click"/>
