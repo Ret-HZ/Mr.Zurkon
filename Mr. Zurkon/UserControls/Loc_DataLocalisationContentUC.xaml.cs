@@ -3,7 +3,7 @@ using Mr.Zurkon.Windows;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
+using System.Windows.Data;
 
 namespace Mr.Zurkon.UserControls
 {
@@ -25,36 +25,34 @@ namespace Mr.Zurkon.UserControls
 
         public void InitEntries()
         {
-            datagrid_entries.ItemsSource = localisation.Entries;
+            datagrid_Entries.ItemsSource = localisation.Entries;
         }
 
 
-        private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void DataGridCell_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
         {
-            var dataGridCellTarget = (DataGridCell)sender;
-            
-            if(dataGridCellTarget.Column.DisplayIndex == 1) //Text
+            e.Handled = true;
+        }
+
+
+        private void datagrid_Entries_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            var dataGrid = sender as DataGrid;
+            object rowItem = e.Row.Item;
+            int rowIndex = dataGrid.Items.IndexOf(rowItem);
+
+            LocEntry entry = localisation.GetEntry(rowIndex);
+            Loc_DataTextEditor txtedit = new Loc_DataTextEditor(entry.Text);
+            this.IsEnabled = false;
+            Nullable<bool> result = txtedit.ShowDialog();
+            if (result == true)
             {
-                if (dataGridCellTarget.Content.GetType() == typeof(TextBlock)) // This happens as a result of double right click
-                {
-                    dataGridCellTarget.IsEditing = false;
-                    return;
-                }
-                TextBox tb = (TextBox)dataGridCellTarget.Content;
-                Loc_DataTextEditor txtedit = new Loc_DataTextEditor(tb.Text);
-                this.IsEnabled = false;
-                Nullable<bool> result = txtedit.ShowDialog();
-                if (result == true)
-                {
-                    tb.Text = txtedit.EditedString;
-                    System.Windows.Data.BindingExpression be = tb.GetBindingExpression(TextBox.TextProperty);
-                    be.UpdateSource();
-                }
-
-                dataGridCellTarget.IsEditing = false;
-                this.IsEnabled = true;
-
+                entry.Text = txtedit.EditedString;
             }
+            this.IsEnabled = true;
+            e.Cancel = true;
+
+            CollectionViewSource.GetDefaultView(datagrid_Entries.ItemsSource)?.Refresh();
         }
     }
 }

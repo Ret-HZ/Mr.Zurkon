@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Mr.Zurkon
 {
@@ -41,6 +42,26 @@ namespace Mr.Zurkon
             Window window = Window.GetWindow(dependencyObject);
             MetroWindow metroWindow = window as MetroWindow;
             return metroWindow.ShowMessageAsync(title, message, style, settings);
+        }
+
+
+        public static T FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(parent); i++)
+            {
+                var child = VisualTreeHelper.GetChild(parent, i);
+                if (child is T typedChild)
+                {
+                    return typedChild;
+                }
+
+                var result = FindVisualChild<T>(child);
+                if (result != null)
+                {
+                    return result;
+                }
+            }
+            return null;
         }
     }
 }

@@ -14,13 +14,16 @@ namespace Mr.Zurkon.UserControls
     /// </summary>
     public partial class Loc_DataContentUC : UserControl
     {
-
         LOC_DATA locdata;
 
-        public Loc_DataContentUC(LOC_DATA locdata)
+        EncodingVariant EncodingVariant;
+
+
+        public Loc_DataContentUC(LOC_DATA locdata, EncodingVariant encodingVariant)
         {
             InitializeComponent();
             this.locdata = locdata;
+            EncodingVariant = encodingVariant;
             InitTabs();
         }
 
@@ -32,12 +35,12 @@ namespace Mr.Zurkon.UserControls
                 TabItem tab = new TabItem();
                 tab.Header = string.Format("Loc {0}", i+1);
                 tab.Content = new Loc_DataLocalisationContentUC(locdata.GetLocalisation(i));
-                tabcontrol_localisations.Items.Add(tab);
+                tabcontrol_Localisations.Items.Add(tab);
             }
         }
 
 
-        private void btn_save_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void btn_Save_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             string dialogFilter = "LOCALDAT Localization Data (*.bin)|*.bin|All files(*.*)| *.*";
@@ -47,7 +50,7 @@ namespace Mr.Zurkon.UserControls
             {
                 try
                 {
-                    Loc_DataWriter.WriteLOC_DATAToFile(locdata, saveFileDialog.FileName);
+                    Loc_DataWriter.WriteLOC_DATAToFile(locdata, EncodingVariant, saveFileDialog.FileName);
                     var metroWindow = (Application.Current.MainWindow as MahApps.Metro.Controls.MetroWindow);
                     metroWindow.ShowMessageAsync("", "LOC_DATA saved!");
                 } catch (Exception ex)
@@ -58,7 +61,7 @@ namespace Mr.Zurkon.UserControls
         }
 
 
-        private void btn_exportcsv_Click(object sender, RoutedEventArgs e)
+        private void btn_ExportCSV_Click(object sender, RoutedEventArgs e)
         {
             var openFolderDialog = new OpenFolderDialog
             {

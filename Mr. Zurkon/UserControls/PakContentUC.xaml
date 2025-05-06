@@ -9,13 +9,15 @@
              Width="Auto">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        <DataGrid Grid.Row="0" Grid.Column="0" x:Name="datagrid" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionMode="Single" AutoGeneratingColumn="datagrid_AutoGeneratingColumn"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,5">
+        <Separator Grid.Row="0" Margin="0, 10, 0, 0"/>
+        <DataGrid Grid.Row="1" Grid.Column="0" x:Name="datagrid" CanUserSortColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionMode="Single" AutoGeneratingColumn="datagrid_AutoGeneratingColumn"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,5">
             <Button x:Name="btn_add" Content="Add" Margin="5,0,5,0" Click="btn_add_Click"/>
             <Button x:Name="btn_replace_selected" Content="Replace Selected" Margin="5,0,5,0" Click="btn_replace_selected_Click"/>
             <Button x:Name="btn_export_selected" Content="Export Selected" Margin="5,0,5,0" Click="btn_export_selected_Click"/>

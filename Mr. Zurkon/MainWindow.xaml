@@ -7,11 +7,11 @@
         xmlns:local="clr-namespace:Mr.Zurkon"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        MinHeight="650"
+        MinHeight="700"
         MinWidth="800"
-        Title="MainWindow" Height="650" Width="800">
+        Title="Mr. Zurkon" Height="700" Width="800">
     
-    <Grid x:Name="grid_main" AllowDrop="True" Drop="grid_main_Drop">
+    <Grid x:Name="grid_main" AllowDrop="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
@@ -19,21 +19,16 @@
 
 
         <Menu Grid.Row="0" Grid.Column="0">
-            <MenuItem Header="File">
-                <MenuItem x:Name="mi_openFile" Header="Open" Click="MenuOpenFileDialog"/>
-                <MenuItem x:Name="mi_openFilePAK" Header="Open PAK" Click="MenuOpenFileDialogPAK"/>
-                <MenuItem x:Name="mi_openFileLOCALDAT" Header="Open LOCALDAT" Click="MenuOpenFileDialogLOCALDAT"/>
-            </MenuItem>
             <MenuItem Header="About">
-                <MenuItem x:Name="mi_aboutMrZurkon" Header="Mr. Zurkon" Click="MenuOpenAboutMrZurkon"/>
-                <MenuItem x:Name="mi_aboutPAKTool" Header="PAKTool" Click="MenuOpenAboutPAKTool"/>
-                <MenuItem x:Name="mi_aboutRelocalizer" Header="Relocalizer" Click="MenuOpenAboutRelocalizer"/>
+                <MenuItem x:Name="mi_About_MrZurkon" Header="Mr. Zurkon" Click="MenuOpenAboutMrZurkon"/>
+                <MenuItem x:Name="mi_About_PAKTool" Header="PAKTool" Click="MenuOpenAboutPAKTool"/>
+                <MenuItem x:Name="mi_About_Relocalizer" Header="Relocalizer" Click="MenuOpenAboutRelocalizer"/>
             </MenuItem>
         </Menu>
 
-        <TabControl x:Name="tabcontrol_tools" Grid.Row="1" Grid.Column="0">
-            <TabItem x:Name="tab_tools_pak" Header="PAKTool"/>
-            <TabItem x:Name="tab_tools_locdata" Header="Relocalizer"/>
+        <TabControl x:Name="tabcontrol_Tools" Grid.Row="1" Grid.Column="0">
+            <TabItem x:Name="tab_Tools_PAKTool" Header="PAKTool"/>
+            <TabItem x:Name="tab_Tools_Relocalizer" Header="Relocalizer"/>
         </TabControl>
     </Grid>
 </mah:MetroWindow>

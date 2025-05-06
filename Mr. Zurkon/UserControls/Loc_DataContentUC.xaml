@@ -13,12 +13,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        <Separator Grid.Row="0"/>
-        <TabControl x:Name="tabcontrol_localisations" Grid.Row="1" TabStripPlacement="Left"/>
+
+        <Separator Grid.Row="0" Margin="0, 10, 0, 0"/>
+        <TabControl x:Name="tabcontrol_Localisations" Grid.Row="1" TabStripPlacement="Left"/>
         <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" Margin="5,5,5,5">
-            <Button x:Name="btn_save" Content="Save" Margin="5,0,5,0" Click="btn_save_Click"/>
-            <Button x:Name="btn_exportcsv" Content="Export as CSV" Margin="5,0,5,0" Click="btn_exportcsv_Click"/>
+            <Button x:Name="btn_Save" Content="Save" Margin="5,0,5,0" Click="btn_Save_Click"/>
+            <Button x:Name="btn_ExportCSV" Content="Export as CSV" Margin="5,0,5,0" Click="btn_ExportCSV_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>
