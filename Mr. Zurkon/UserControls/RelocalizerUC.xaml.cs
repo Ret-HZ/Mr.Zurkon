@@ -1,6 +1,8 @@
 ﻿using BoltUtils.LOC_DATA;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -22,18 +24,39 @@ namespace Mr.Zurkon.UserControls
         }
 
 
-        private void btn_Open_Click(object sender, RoutedEventArgs e)
+        private async void btn_Open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "LOCALDAT Localization Data (*.bin)|*.bin|" + "All types (*.*)|*.*";
             Nullable<bool> result = openFileDialog.ShowDialog();
             if (result == true)
             {
-                string filePath = openFileDialog.FileName;
-                LOC_DATA locData = Loc_DataReader.ReadLOC_DATA(filePath, SelectedEncodingVariant);
-                Loc_DataContentUC locDataContent = new Loc_DataContentUC(locData, SelectedEncodingVariant);
-                grid_Content.Children.Clear();
-                grid_Content.Children.Add(locDataContent);
+                var metroWindow = (Application.Current.MainWindow as MahApps.Metro.Controls.MetroWindow);
+                var controller = await metroWindow.ShowProgressAsync("Opening LOC_DATA", "Please wait...");
+                controller.SetIndeterminate();
+
+                try
+                {
+                    await Task.Run(() =>
+                    {
+                        string filePath = openFileDialog.FileName;
+                        LOC_DATA locData = Loc_DataReader.ReadLOC_DATA(filePath, SelectedEncodingVariant);
+                        Application.Current.Dispatcher.BeginInvoke(() =>
+                        {
+                            Loc_DataContentUC locDataContent = new Loc_DataContentUC(locData, SelectedEncodingVariant);
+                            grid_Content.Children.Clear();
+                            grid_Content.Children.Add(locDataContent);
+                        });
+                    });
+                }
+                catch (Exception ex)
+                {
+                    await Util.ShowMessageBox($"{ex.Message}", "Error");
+                }
+                finally
+                {
+                    await controller.CloseAsync();
+                }
             }
         }
 

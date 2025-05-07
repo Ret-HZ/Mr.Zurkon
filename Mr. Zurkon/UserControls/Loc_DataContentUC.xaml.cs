@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -40,7 +41,7 @@ namespace Mr.Zurkon.UserControls
         }
 
 
-        private void btn_Save_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void btn_Save_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             string dialogFilter = "LOCALDAT Localization Data (*.bin)|*.bin|All files(*.*)| *.*";
@@ -48,14 +49,24 @@ namespace Mr.Zurkon.UserControls
             saveFileDialog.FileName = "LOCALDAT.BIN";
             if (saveFileDialog.ShowDialog() == true)
             {
+                var metroWindow = (Application.Current.MainWindow as MahApps.Metro.Controls.MetroWindow);
+                var controller = await metroWindow.ShowProgressAsync("Saving LOC_DATA", "Please wait...");
+                controller.SetIndeterminate();
+
                 try
                 {
-                    Loc_DataWriter.WriteLOC_DATAToFile(locdata, EncodingVariant, saveFileDialog.FileName);
-                    var metroWindow = (Application.Current.MainWindow as MahApps.Metro.Controls.MetroWindow);
-                    metroWindow.ShowMessageAsync("", "LOC_DATA saved!");
-                } catch (Exception ex)
+                    await Task.Run(() =>
+                    {
+                        Loc_DataWriter.WriteLOC_DATAToFile(locdata, EncodingVariant, saveFileDialog.FileName);
+                    });
+                }
+                catch (Exception ex)
                 {
-                    MessageBox.Show(String.Format("An error occurred:\n{0}\n{1}", ex.Message, ex.StackTrace), "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    await Util.ShowMessageBox($"{ex.Message}", "Error");
+                }
+                finally
+                {
+                    await controller.CloseAsync();
                 }
             }
         }
