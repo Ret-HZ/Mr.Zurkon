@@ -14,14 +14,10 @@ namespace BoltUtils.LOC_DATA
         /// <param name="encodingVariant">The <see cref="EncodingVariant"/> to use.</param>
         private static void WriteLOC_DATA(DataWriter writer, LOC_DATA locdata, EncodingVariant encodingVariant)
         {
-            HighImpactEncoding HIEncoding = new HighImpactEncoding(encodingVariant);
+            HighImpactEncoding HIEncoding = new HighImpactEncoding(encodingVariant, (Version)locdata.Version);
 
             writer.Write("LOC_DATA", false);
-            writer.Write(locdata.unk0x08);
-
-            writer.Write((byte)0x01); //Always 0x010612
-            writer.Write((byte)0x06);
-            writer.Write((byte)0x12);
+            writer.Write(locdata.Version);
 
             writer.Write(locdata.GetLocalisationAmount());
             writer.Write(locdata.GetLocalisationEntryAmount());
@@ -39,7 +35,11 @@ namespace BoltUtils.LOC_DATA
                 PointersLTOC.Add((int)writer.Stream.Position);
                 writer.Write(0); //Placeholder TDEF start pointer
                 writer.Write(0); //Placeholder TDEF size
-                writer.Write(0); //Placeholder Metadata offset
+
+                if (locdata.Version == (int)Version.SM_SAC_RETAIL)
+                {
+                    writer.Write(0); //Placeholder Metadata offset
+                }
             }
 
             //TDEF and ENTR Sections

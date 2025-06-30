@@ -9,7 +9,7 @@ namespace BoltUtils.LOC_DATA
         List<Localisation> Localisations = new List<Localisation>();
 
         //Unknown data
-        public byte unk0x08;
+        public int Version;
         public byte[] unkSCOL;
 
 

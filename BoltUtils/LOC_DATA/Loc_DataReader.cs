@@ -21,11 +21,15 @@ namespace BoltUtils.LOC_DATA
                 throw new Exception("Invalid magic. Expected LOC_DATA");
             }
             LOC_DATA locdata = new LOC_DATA();
-            HighImpactEncoding HIEncoding = new HighImpactEncoding(encodingVariant);
 
-            locdata.unk0x08 = reader.ReadByte(); //Version? Type?
-            byte[] unk0x09 = reader.ReadBytes(0x3); //Always 0x010612
+            locdata.Version = reader.ReadInt32(); // Version?
+            HighImpactEncoding HIEncoding = new HighImpactEncoding(encodingVariant, (Version)locdata.Version);
+
             byte localisationAmount = reader.ReadByte();
+            if (locdata.Version == (int)Version.SM_DEMO) // The SM demo has 0xFF as the localisation amount. It is supposed to be 4.
+            {
+                localisationAmount = 4;
+            }
             Int16 locEntryAmount = (short)reader.ReadInt24();
 
             //SCOL Section
@@ -42,7 +46,10 @@ namespace BoltUtils.LOC_DATA
             {
                 TDEFStartPointers.Add(reader.ReadInt32());
                 TDEFSizes.Add(reader.ReadInt32());
-                MetadataOffsets.Add(reader.ReadInt32());
+                if (locdata.Version == (int)Version.SM_SAC_RETAIL) // This data does not exist in previous versions.
+                {
+                    MetadataOffsets.Add(reader.ReadInt32());
+                }
             }
 
             //TDEF Sections
