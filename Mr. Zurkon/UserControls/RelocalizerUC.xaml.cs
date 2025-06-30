@@ -43,6 +43,7 @@ namespace Mr.Zurkon.UserControls
                         LOC_DATA locData = Loc_DataReader.ReadLOC_DATA(filePath, SelectedEncodingVariant);
                         Application.Current.Dispatcher.BeginInvoke(() =>
                         {
+                            lbl_Version.Content = (BoltUtils.LOC_DATA.Version)locData.Version;
                             Loc_DataContentUC locDataContent = new Loc_DataContentUC(locData, SelectedEncodingVariant);
                             grid_Content.Children.Clear();
                             grid_Content.Children.Add(locDataContent);
